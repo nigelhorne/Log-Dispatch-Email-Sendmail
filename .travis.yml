@@ -8,4 +8,6 @@ perl:
   - "5.16"
   - "5.14"
 before_install:
+  - sudo apt-get update -q
+  - sudo apt-get install -y sendmail
   - cpanm --installdeps --notest --verbose --no-interactive .
