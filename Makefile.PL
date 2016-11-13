@@ -1,12 +1,13 @@
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
+use Devel::CheckBin;
 
-unless((-f '/usr/sbin/sendmail') && (-x '/usr/sbin/sendmail')) {
-	# This will set the CPAN-Testers status to Unknown
-	# TODO: Work out how to set the status to NA
-	die '/usr/sbin/sendmail is not installed';
-}
+check_bin('/usr/sbin/sendmail');
+# unless((-f '/usr/sbin/sendmail') && (-x '/usr/sbin/sendmail')) {
+	# print STDERR "NA: sendmail not installed\n";
+	# exit(0);
+# }
 
 WriteMakefile(
     NAME                => 'Log::Dispatch::Email::Sendmail',
@@ -18,6 +19,9 @@ WriteMakefile(
       ? ('LICENSE'=> 'GPL')
       : ()),
     PL_FILES            => {},
+    CONFIGURE_REQUIRES => {
+    	'Devel::CheckBin' => 0,
+    },
     PREREQ_PM => {
         'Test::More' => 0.82,	# Needs new_ok
 	'Test::NoWarnings' => 0,
