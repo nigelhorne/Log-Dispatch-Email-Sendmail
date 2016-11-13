@@ -19,7 +19,7 @@ WriteMakefile(
       ? ('LICENSE'=> 'GPL')
       : ()),
     PL_FILES            => {},
-    CONFIGURE_REQUIRES => {
+    BUILD_REQUIRES => {
     	'Devel::CheckBin' => 0,
     },
     PREREQ_PM => {
