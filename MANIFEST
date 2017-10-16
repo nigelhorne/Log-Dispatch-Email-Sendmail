@@ -1,9 +1,12 @@
 Changes
-MANIFEST
-Makefile.PL
-README
 ignore.txt
 lib/Log/Dispatch/Email/Sendmail.pm
+LICENSE
+Makefile.PL
+MANIFEST
+META.yml			Module meta-data (added by MakeMaker)
+README
+README.md
 t/00-load.t
 t/boiler.t
 t/changes.t
@@ -25,4 +28,3 @@ t/snippets.t
 t/spelling.t
 t/strict.t
 t/vars.t
-META.yml                                 Module meta-data (added by MakeMaker)
