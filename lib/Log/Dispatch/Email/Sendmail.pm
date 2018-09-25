@@ -69,9 +69,7 @@ sub send_email {
 			print $mail "From: $from\n";
 		}
 		my $subject = $self->{subject};
-		print $mail "Subject: $subject\n\n";
-
-		print $mail $p{message};
+		print $mail "Subject: $subject\n\n", $p{message};
 
 		close $mail;
 	} else {
