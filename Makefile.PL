@@ -38,7 +38,12 @@ WriteMakefile(
 			type => 'git',
 			url => 'git://github.com/nigelhorne/Log-Dispatch-Email-Sendmail.git',
 			web => 'https://github.com/nigelhorne/Log-Dispatch-Email-Sendmail',
-    		},
+    		}, bugtracker => {
+			# web => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Log-Dispatch-Email-Sendmail',
+			web => 'https://github.com/nigelhorne/Log-Dispatch-Email-Sendmail/issues',
+			url => 'https://github.com/nigelhorne/Log-Dispatch-Email-Sendmail/issues',
+			mailto => 'bug-Log-Dispatch-Email-Sendmail@rt.cpan.org'
+		}
 	},
     },
     MIN_PERL_VERSION	=> '5.6.2'	# Probably would work, but never tested on earlier versions than this
