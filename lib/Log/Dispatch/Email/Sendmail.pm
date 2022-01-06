@@ -134,7 +134,7 @@ Kudos to Dave Rolksy for the entire Log::Dispatch framework.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2022 Nigel Horne.
+Copyright 2013-2022 Nigel Horne.
 
 This program is released under the following licence: GPL
 
