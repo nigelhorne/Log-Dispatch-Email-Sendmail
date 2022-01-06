@@ -62,7 +62,18 @@ sub send_email {
 
 	my $to = join(',', @{$self->{to}});
 
-	if(open(my $mail, '|-', '/usr/sbin/sendmail -t')) {
+	# This workaround is for Dreamhost which misconfigures their e-mail clients
+	#	producing "sendmail: warning: inet_protocols: disabling IPv6 name/address support: Address family not supported by protocol"
+	#	which breaks CGI script, and they have removed root access to you can't fix it
+
+	my $mail;
+	{
+		local *STDERR;
+		open STDERR, '>', '/dev/null';
+		open($mail, '|-', '/usr/sbin/sendmail -t');
+	}
+
+	if($mail) {
 		print $mail "To: $to\n";
 		if($self->{from}) {
 			my $from = $self->{from};
@@ -123,7 +134,7 @@ Kudos to Dave Rolksy for the entire Log::Dispatch framework.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2013 Nigel Horne.
+Copyright 2022 Nigel Horne.
 
 This program is released under the following licence: GPL
 
