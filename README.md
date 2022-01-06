@@ -1,14 +1,14 @@
-# Log::Dispatch::Email::Sendmail
+# NAME
 
-Subclass of Log::Dispatch::Email that sends e-mail using Sendmail
+Log::Dispatch::Email::Sendmail - Subclass of Log::Dispatch::Email that sends e-mail using Sendmail
 
 # VERSION
 
-Version 0.02
+Version 0.03
 
 # SYNOPSIS
 
-[Log::Dispatch::Email::MailSendmail](https://metacpan.org/pod/Log::Dispatch::Email::MailSendmail) is no longer suitable for all
+[Log::Dispatch::Email::MailSendmail](https://metacpan.org/pod/Log%3A%3ADispatch%3A%3AEmail%3A%3AMailSendmail) is no longer suitable for all
 situations because it doesn't use Sendmail to send mail (despite the
 name of the module) instead it uses SMTP and doesn't support AUTH.
 
@@ -46,7 +46,7 @@ No known bugs.
 
 # SEE ALSO
 
-[Log::Dispatch::Email::MailSendmail](https://metacpan.org/pod/Log::Dispatch::Email::MailSendmail)
+[Log::Dispatch::Email::MailSendmail](https://metacpan.org/pod/Log%3A%3ADispatch%3A%3AEmail%3A%3AMailSendmail)
 
 # SUPPORT
 
@@ -78,6 +78,6 @@ Kudos to Dave Rolksy for the entire Log::Dispatch framework.
 
 # LICENSE AND COPYRIGHT
 
-Copyright 2013 Nigel Horne.
+Copyright 2013-2022 Nigel Horne.
 
 This program is released under the following licence: GPL

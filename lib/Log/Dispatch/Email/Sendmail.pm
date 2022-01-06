@@ -11,11 +11,11 @@ Log::Dispatch::Email::Sendmail - Subclass of Log::Dispatch::Email that sends e-m
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -65,7 +65,6 @@ sub send_email {
 	# This workaround is for Dreamhost which misconfigures their e-mail clients
 	#	producing "sendmail: warning: inet_protocols: disabling IPv6 name/address support: Address family not supported by protocol"
 	#	which breaks CGI script, and they have removed root access to you can't fix it
-
 	my $mail;
 	{
 		local *STDERR;
