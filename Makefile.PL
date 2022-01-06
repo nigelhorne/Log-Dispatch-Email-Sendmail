@@ -23,7 +23,7 @@ WriteMakefile(
     	'Devel::CheckBin' => 0,
     },
     PREREQ_PM => {
-        'Test::More' => 0.82,	# Needs new_ok
+	'Test::Most' => 0,
 	'Test::NoWarnings' => 0,
 	'Log::Dispatch' => 0,
 	'Sys::Hostname' => 0,
