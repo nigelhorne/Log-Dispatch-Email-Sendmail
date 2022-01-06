@@ -4,6 +4,7 @@ INSTALLATION
 
 To install this module, run the following commands:
 
+	cpan -i Devel::CheckBin
 	perl Makefile.PL
 	make
 	LOG_DISPATCH_TEST_EMAIL=your_address@example.org make test
