@@ -27,9 +27,9 @@ jobs:
       - run: perl -V
       - name: Install Dependencies
         run: |
-          cpanm -iqn --skip-satisfied File::Spec ExtUtils::MakeMaker Devel::CheckBin
-          cpanm -iqn --skip-satisfied Test::Pod::Spelling::CommonMistakes Test::Portability::Files Test::Compile Test::Pod::Coverage Test::Spelling::Comment
-          cpanm -iqn --skip-satisfied --installdeps --notest .
+          cpanm -in File::Spec ExtUtils::MakeMaker Devel::CheckBin
+          cpanm -in Test::Pod::Spelling::CommonMistakes Test::Portability::Files Test::Compile Test::Pod::Coverage Test::Spelling::Comment
+          cpanm -in --installdeps --notest .
       - name: Run Tests
         run: prove -l -b t
         env:
