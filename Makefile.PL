@@ -1,7 +1,16 @@
 use strict;
 use warnings;
 use ExtUtils::MakeMaker 6.64;	# 6.64 for TEST_REQUIRES
-use Devel::CheckBin;
+
+BEGIN {
+	if($ENV{'AUTOMATED_TESTING'}) {
+		print STDERR "NA: Automatic testing disabled until I can work out how to tell smokers to instsall Devel::CheckBin\n";
+		exit(0);
+	}
+
+	require Devel::CheckBin;
+	Devel::CheckBin->import();
+}
 
 check_bin('/usr/sbin/sendmail');
 # unless((-f '/usr/sbin/sendmail') && (-x '/usr/sbin/sendmail')) {
