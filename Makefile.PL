@@ -4,7 +4,9 @@ use ExtUtils::MakeMaker 6.64;	# 6.64 for TEST_REQUIRES
 
 BEGIN {
 	if($ENV{'AUTOMATED_TESTING'}) {
-		print STDERR "NA: Automatic testing disabled until I can work out how to tell smokers to instsall Devel::CheckBin\n";
+		# TODO: I suppose it would be better to return "UNKNOWN" on
+		#	platforms without Devel::CheckBin
+		print STDERR "NA: Automatic testing disabled until I can work out how to tell smokers to install Devel::CheckBin\n";
 		exit(0);
 	}
 
