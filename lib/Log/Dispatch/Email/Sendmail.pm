@@ -74,8 +74,7 @@ sub send_email {
 
 	if($mail) {
 		print $mail "To: $to\n";
-		if($self->{from}) {
-			my $from = $self->{from};
+		if(my $from = $self->{from}) {
 			print $mail "From: $from\n";
 		}
 		my $subject = $self->{subject};
