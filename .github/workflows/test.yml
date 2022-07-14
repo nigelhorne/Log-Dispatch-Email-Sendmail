@@ -32,7 +32,7 @@ jobs:
         run: |
           cpanm -iqn --skip-satisfied File::Spec ExtUtils::MakeMaker Devel::CheckBin Test::Harness
           cpanm -iqn --skip-satisfied Test::Pod::Spelling::CommonMistakes Test::Portability::Files Test::Compile Test::Pod::Coverage Test::Spelling::Comment
-          cpanm -inv --skip-satisfied --installdeps --notest .
+          cpanm -iqn --skip-satisfied --installdeps --notest .
       - name: Run Tests
         run: prove -l -b t
         env:

@@ -14,11 +14,13 @@ BEGIN {
 	Devel::CheckBin->import();
 }
 
-check_bin('/usr/sbin/sendmail');
-# unless((-f '/usr/sbin/sendmail') && (-x '/usr/sbin/sendmail')) {
-	# print STDERR "NA: sendmail not installed\n";
-	# exit(0);
-# }
+unless(defined($ENV{'AUTHOR_TESTING'})) {
+	check_bin('/usr/sbin/sendmail');
+	# unless((-f '/usr/sbin/sendmail') && (-x '/usr/sbin/sendmail')) {
+		# print STDERR "NA: sendmail not installed\n";
+		# exit(0);
+	# }
+}
 
 WriteMakefile(
     NAME                => 'Log::Dispatch::Email::Sendmail',
