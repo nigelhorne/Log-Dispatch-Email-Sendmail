@@ -14,6 +14,7 @@ BEGIN {
 	Devel::CheckBin->import();
 }
 
+# Allow me (and CI tools) to test on systems without sendmail
 unless(defined($ENV{'AUTHOR_TESTING'})) {
 	check_bin('/usr/sbin/sendmail');
 	# unless((-f '/usr/sbin/sendmail') && (-x '/usr/sbin/sendmail')) {
