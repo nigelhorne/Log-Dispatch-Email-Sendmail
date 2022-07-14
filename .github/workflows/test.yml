@@ -9,6 +9,8 @@ on:
     tags-ignore:
       - '*'
   pull_request:
+env:
+  AUTHOR_TESTING: 1
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -35,5 +37,3 @@ jobs:
           cpanm -ivn --skip-satisfied --installdeps --notest .
       - name: Run Tests
         run: prove -l -b t
-        env:
-          AUTHOR_TESTING: 1

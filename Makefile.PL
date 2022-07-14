@@ -16,7 +16,8 @@ BEGIN {
 
 # Allow me (and CI tools) to test on systems without sendmail
 unless(defined($ENV{'AUTHOR_TESTING'})) {
-	check_bin('/usr/sbin/sendmail');
+	# check_bin('/usr/sbin/sendmail');
+	can_run('/usr/sbin/sendmail');
 	# unless((-f '/usr/sbin/sendmail') && (-x '/usr/sbin/sendmail')) {
 		# print STDERR "NA: sendmail not installed\n";
 		# exit(0);
