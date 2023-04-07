@@ -2,6 +2,7 @@ Revision history for Log-Dispatch-Email-Sendmail
 
 0.04
 	Disable smokers for now
+	Fix warning about unsent message
 
 0.03	Thu Jan  6 15:10:38 EST 2022
 	Send N/A, not Unknown, on machines without sendmail
