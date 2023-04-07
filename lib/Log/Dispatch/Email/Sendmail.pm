@@ -81,7 +81,9 @@ sub send_email {
 		print $mail "Subject: $subject\n\n", $p{message};
 
 		close $mail;
-		delete ${$_} for ( qw( message mailer level ) );
+
+		delete $p{'buffer'};
+		$self->{'buffer'} = [];
 	} else {
 		warn "/usr/sbin/sendmail: $?";
 	}
