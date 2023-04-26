@@ -119,10 +119,6 @@ L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Log::Dispatch::Log::Sendmail>
 
 L<http://annocpan.org/dist/Log-Dispatch-Log-Sendmail>
 
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Log-Dispatch-Log-Sendmail>
-
 =item * Search CPAN
 
 L<http://search.cpan.org/dist/Log-Dispatch-Log-Sendmail/>
@@ -135,7 +131,7 @@ Kudos to Dave Rolksy for the entire Log::Dispatch framework.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2013-2022 Nigel Horne.
+Copyright 2013-2023 Nigel Horne.
 
 This program is released under the following licence: GPL
 
