@@ -39,7 +39,7 @@ fork/exec so it should only be used where really needed.
       ],
     );
 
-    $log->emerg("Something bad is happening");
+    $log->emerg('Something bad is happening');
 
 =head1 SUBROUTINES/METHODS
 
@@ -57,6 +57,7 @@ sub send_email {
 		# Don't warn - it could send a message back through
 		# here
 		# warn 'To whom should I be sending this e-mail?';
+		print STDERR "To whom should I be sending this e-mail?\n";
 		return;
 	}
 
