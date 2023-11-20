@@ -1,5 +1,6 @@
 ---
 # See https://github.com/actions/virtual-environments
+# https://github.com/marketplace/actions/setup-perl-environment
 
 name: Test Code
 on:
@@ -9,8 +10,10 @@ on:
     tags-ignore:
       - '*'
   pull_request:
-env:
-  AUTHOR_TESTING: 1
+  schedule:
+    - cron: '12 23 10 * *'
+# env:
+#   AUTOMATED_TESTING: 1
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -39,5 +42,5 @@ jobs:
           cpanm -iqn --skip-satisfied --installdeps --notest .
       - name: Run Tests
         run: prove -l -b t
-        env:
-          AUTHOR_TESTING: 1
+        # env:
+        #   AUTOMATED_TESTING: 1

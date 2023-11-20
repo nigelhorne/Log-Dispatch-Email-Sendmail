@@ -6,6 +6,7 @@ BEGIN {
 	if($ENV{'AUTOMATED_TESTING'}) {
 		# TODO: I suppose it would be better to return "UNKNOWN" on
 		#	platforms without Devel::CheckBin
+		#	Note this is also disabled in GitHub Actions
 		print STDERR "NA: Automatic testing disabled until I can work out how to tell smokers to install Devel::CheckBin\n";
 		exit(0);
 	}

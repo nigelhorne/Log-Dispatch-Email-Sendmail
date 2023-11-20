@@ -1,6 +1,6 @@
 Revision history for Log-Dispatch-Email-Sendmail
 
-0.04
+0.04	Mon Nov 20 07:35:15 EST 2023
 	Disable smokers for now
 	Fix warning about unsent message
 	Force flush on destroy
