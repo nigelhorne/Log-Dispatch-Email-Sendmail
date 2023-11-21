@@ -12,8 +12,8 @@ on:
   pull_request:
   schedule:
     - cron: '12 23 10 * *'
-# env:
-#   AUTOMATED_TESTING: 1
+env:
+  AUTOMATED_TESTING: 1
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -42,5 +42,5 @@ jobs:
           cpanm -iqn --skip-satisfied --installdeps --notest .
       - name: Run Tests
         run: prove -l -b t
-        # env:
-        #   AUTOMATED_TESTING: 1
+        env:
+          AUTOMATED_TESTING: 1

@@ -1,5 +1,8 @@
 Revision history for Log-Dispatch-Email-Sendmail
 
+0.05
+	Attempt a fix for https://github.com/nigelhorne/Log-Dispatch-Email-Sendmail/issues/82
+
 0.04	Mon Nov 20 07:35:15 EST 2023
 	Disable smokers for now
 	Fix warning about unsent message

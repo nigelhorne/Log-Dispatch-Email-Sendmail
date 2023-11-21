@@ -2,17 +2,63 @@ use strict;
 use warnings;
 use ExtUtils::MakeMaker 6.64;	# 6.64 for TEST_REQUIRES
 
-BEGIN {
-	if($ENV{'AUTOMATED_TESTING'}) {
-		# TODO: I suppose it would be better to return "UNKNOWN" on
-		#	platforms without Devel::CheckBin
-		#	Note this is also disabled in GitHub Actions
-		print STDERR "NA: Automatic testing disabled until I can work out how to tell smokers to install Devel::CheckBin\n";
-		exit(0);
-	}
+my @needfull;	# https://github.com/nigelhorne/Log-Dispatch-Email-Sendmail/issues/82
 
-	require Devel::CheckBin;
-	Devel::CheckBin->import();
+# Install Pre-requisites
+BEGIN {
+	# if($ENV{'AUTOMATED_TESTING'}) {
+		# # TODO: I suppose it would be better to return "UNKNOWN" on
+		# #	platforms without Devel::CheckBin
+		# #	Note this is also disabled in GitHub Actions
+		# print STDERR "NA: Automatic testing disabled until I can work out how to tell smokers to install Devel::CheckBin\n";
+		# exit(0);
+	# }
+
+	# require Devel::CheckBin;
+	# Devel::CheckBin->import();
+	my @modules = (
+		'Devel::CheckBin'
+	);
+	foreach my $module(@modules) {
+		eval "use $module";
+		if($@) {
+			# Install module dependancies
+			if($module =~ /(.+)\s/) {
+				# Specific version not satisfied
+				push @needfull, $1;
+			} else {
+				push @needfull, $module;
+			}
+		}
+	}
+	if(scalar(@needfull)) {
+		my $list = join(' ', @needfull);
+		print "Installing $list\n";
+		$ENV{'PERL_MM_USE_DEFAULT'} = 1;
+		# system("cpan -i $list");
+		system('perl -MCPAN -e \'CPAN::Shell->install("' . join('", "', @needfull) . '")\'');
+	}
+}
+
+foreach my $module(@needfull) {
+	my $version;
+	if($module =~ /(.+)\s(.+)$/) {
+		$module = $1;
+		$version = $2;
+	}
+	if($module =~ /.+\/(.+)/) {
+		$module = $1;
+	}
+	$module =~ s/\-/::/g;
+	$module =~ s/\.tar\.gz$//;
+	eval "require $module";
+	if($@) {
+		die $@;
+	}
+	$module->import();
+	# if($version && ($module::VERSION < $version)) {
+		# die "$module: need $version got ", $module::VERSION;
+	# }
 }
 
 # Allow me (and CI tools) to test on systems without sendmail
