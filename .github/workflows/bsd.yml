@@ -44,6 +44,4 @@ jobs:
             sudo chown -R runner:runner .
             perl Makefile.PL
             make
-            prove -wlmb t
-          env:
-            AUTOMATED_TESTING: 1
+            AUTOMATED_TESTING=1 prove -wlmb t
