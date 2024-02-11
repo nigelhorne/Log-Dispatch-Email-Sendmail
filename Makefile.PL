@@ -88,8 +88,9 @@ WriteMakefile(
 	'Sys::Hostname' => 0,
     }, TEST_REQUIRES => {
 	'Test::Most' => 0,
+	'Test::Needs' => 0,
 	'Test::NoWarnings' => 0,
-	'Test::Requires' => 0,
+	'Test::Requires' => 0
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Log-Dispatch-Email-Sendmail-*' },
