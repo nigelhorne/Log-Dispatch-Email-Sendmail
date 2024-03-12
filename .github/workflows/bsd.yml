@@ -40,7 +40,7 @@ jobs:
           run: |
             sudo hostname example.com
             sudo ${{ matrix.os.pkginstall }}
-            cpan -qin Test::Needs
+            cpan -iT Test::Needs
             curl -L https://cpanmin.us | sudo perl - --notest --installdeps --with-configure --with-develop .
             sudo chown -R runner:runner .
             AUTOMATED_TESTING=1 perl Makefile.PL
