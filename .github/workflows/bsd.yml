@@ -22,7 +22,7 @@ jobs:
         os:
           - name: freebsd
             version: '13.0'
-            pkginstall: pkg install -y p5-ExtUtils-MakeMaker p5-Devel-CheckBin
+            pkginstall: pkg install -y p5-ExtUtils-MakeMaker p5-Devel-CheckBin p5-Log-Dispatch p5-Test-Most p5-Test-NoWarnings p5-Test-Requires
           - name: openbsd
             version: '7.1'
             pkginstall: pkg_add p5-Devel-CheckBin
@@ -40,6 +40,7 @@ jobs:
           run: |
             sudo hostname example.com
             sudo ${{ matrix.os.pkginstall }}
+            cpan -qin Test::Needs
             curl -L https://cpanmin.us | sudo perl - --notest --installdeps --with-configure --with-develop .
             sudo chown -R runner:runner .
             AUTOMATED_TESTING=1 perl Makefile.PL
