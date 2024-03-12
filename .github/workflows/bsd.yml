@@ -45,3 +45,5 @@ jobs:
             perl Makefile.PL
             make
             AUTOMATED_TESTING=1 prove -wlmb t
+            env:
+              AUTOMATED_TESTING: 1

@@ -94,7 +94,7 @@ sub DESTROY {
 	if(defined($^V) && ($^V ge 'v5.14.0')) {
 		return if ${^GLOBAL_PHASE} eq 'DESTRUCT';	# >= 5.14.0 only
 	}
-	
+
 	my $self = shift;
 	return unless(ref($self));
 
