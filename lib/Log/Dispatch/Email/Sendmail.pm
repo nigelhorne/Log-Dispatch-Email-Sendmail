@@ -61,11 +61,11 @@ sub send_email {
 		return;
 	}
 
-	my $to = join(',', @{$self->{to}});
+	my $to = _sanitize_header(join(',', @{$self->{to}}));
 
-	# This workaround is for Dreamhost which misconfigures their e-mail clients
+	# This workaround is for Dreamhost, which misconfigures its e-mail clients
 	#	producing "sendmail: warning: inet_protocols: disabling IPv6 name/address support: Address family not supported by protocol"
-	#	which breaks CGI script, and they have removed root access to you can't fix it
+	#	which breaks the CGI script, and they have removed root access, so you can't fix it
 	my $mail;
 	{
 		local *STDERR;
@@ -76,9 +76,11 @@ sub send_email {
 	if($mail) {
 		print $mail "To: $to\n";
 		if(my $from = $self->{from}) {
+			$from = _sanitize_header($from);
 			print $mail "From: $from\n";
 		}
 		my $subject = $self->{subject};
+		$subject = _sanitize_header($subject);
 		print $mail "Subject: $subject\n\n", $p{message};
 
 		close $mail;
@@ -88,6 +90,12 @@ sub send_email {
 	} else {
 		warn "/usr/sbin/sendmail: $?";
 	}
+}
+
+sub _sanitize_header {
+	my $value = $_[0];
+	$value =~ s/[\r\n]//g;	# Remove CR/LF
+	return $value;
 }
 
 sub DESTROY {
@@ -145,7 +153,7 @@ Kudos to Dave Rolksy for the entire Log::Dispatch framework.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2013-2023 Nigel Horne.
+Copyright 2013-2025 Nigel Horne.
 
 This program is released under the following licence: GPL
 
