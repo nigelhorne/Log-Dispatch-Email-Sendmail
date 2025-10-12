@@ -88,7 +88,7 @@ sub send_email {
 		delete $p{'buffer'};
 		$self->{'buffer'} = [];
 	} else {
-		warn "/usr/sbin/sendmail: $?";
+		print STDERR "/usr/sbin/sendmail: $?";
 	}
 }
 
